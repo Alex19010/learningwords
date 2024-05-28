@@ -4,7 +4,8 @@
 
 {% block content %}
     {% for word in words %}
-        <p>{{ word.foreign_word }} - {{ word.native_word }}</p>
+        <p>{{ word.foreign_word }} - {{ word.native_word }} <a href="{% url 'delete_word' section_id=section.id word_id=word.id %}">Delete</a></p>
+
     {% empty %}
         <p>No words available.</p>
     {% endfor %}
