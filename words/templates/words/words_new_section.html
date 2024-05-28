@@ -1,0 +1,12 @@
+{% extends 'words/main_words.html' %}
+{% load static %}
+
+
+{% block content %}
+    <h1>Create a New Section</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}

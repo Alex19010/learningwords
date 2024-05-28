@@ -1,0 +1,13 @@
+{% extends 'words/main_words.html' %}
+{% load static %}
+
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <input name="foreign_word" id="content1" type="text" class="" placeholder="Type your message here" style="width: 550px;" required></input>
+        <input name="native_word" id="content2" type="text" class="" placeholder="Type your message here" style="width: 550px;" required></input>
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'show_words' section_id=section.id %}">Return to section</a>
+{% endblock %}

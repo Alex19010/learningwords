@@ -1,0 +1,13 @@
+{% extends 'words/main_words.html' %}
+{% load static %}
+
+
+{% block content %}
+    {% for word in words %}
+        <p>{{ word.foreign_word }} - {{ word.native_word }}</p>
+    {% empty %}
+        <p>No words available.</p>
+    {% endfor %}
+    <a href="{% url 'create_words' section_id=section.id %}">Create new words</a><p></p>
+    <a href="{% url 'home' %}">Return to home</a>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'words/main_words.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="">
+        {% for section in sections %}
+            <a href="{% url 'show_words' section_id=section.id %}">{{ section.name }} (User: {{ section.user.username }})</a><p></p>
+        {% empty %}
+            <li>No sections available.</li>
+        {% endfor %}
+        <p>
+            Click here to create your section
+        </p>
+        <a href="{% url 'create_section' %}">create section</a>
+    </div>
+{% endblock %}
