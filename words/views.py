@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Word, Section
 from .forms import FormSection, FormWord
 from accounts.models import User
 
 
+@login_required
 def home(request):
     sections = Section.objects.filter(user=request.user)
     context = {
@@ -12,13 +14,14 @@ def home(request):
     return render(request, 'words/words_home.html', context)
 
 
+@login_required
 def create_section(request):
     form = FormSection()
     if request.method == 'POST':
         form = FormSection(request.POST)
         if form.is_valid():
             section = form.save(commit=False)
-            section.user = User.objects.first()
+            section.user = request.user
             form.save()
             return redirect('home')
     context = {
@@ -27,6 +30,7 @@ def create_section(request):
     return render(request, 'words/words_new_section.html', context)
 
 
+@login_required
 def show_words(request, section_id):
     words = Word.objects.filter(section=section_id)
     section = get_object_or_404(Section, id=section_id)
@@ -37,6 +41,7 @@ def show_words(request, section_id):
     return render(request, 'words/words_show_words.html', context)
 
 
+@login_required
 def create_words(request, section_id):
     section = get_object_or_404(Section, id=section_id)
     context = {
@@ -52,6 +57,7 @@ def create_words(request, section_id):
     return render(request, 'words/words_new_words.html', context)
 
 
+@login_required
 def delete_word(request, section_id, word_id):
     word = get_object_or_404(Word, id=word_id, section=section_id)
     word.delete()
@@ -62,11 +68,13 @@ def delete_word(request, section_id, word_id):
     # return redirect('show_words', context)
 
 
+@login_required
 def delete_section(request, section_id):
     section = get_object_or_404(Section, id=section_id)
     section.delete()
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
+@login_required
 def learn_word(request):
     pass

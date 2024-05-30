@@ -7,6 +7,22 @@
 </head>
 <body>
 
+    <li>
+      {% if request.user.is_authenticated %}
+      <li>
+        <a href="{% url 'home' %}">{{ request.user.username }}</a>
+        <a href="{% url 'logout' %}">Log out</a>
+      </li>
+      {% else %}
+        <li>
+          <a href="{% url 'register_in' %}">Sign in</a>
+        </li>
+        <li>
+          <a href="{% url 'register_up' %}">Sing up</a>
+        </li>
+      {% endif %}
+    </li>
+
     {% block content %}
     {% endblock %}
 

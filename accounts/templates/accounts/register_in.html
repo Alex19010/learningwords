@@ -1,0 +1,27 @@
+{% extends 'accounts/main_accounts.html' %}
+{% load static %}
+
+{% block content %}
+    <h2><span>Sign</span> in</h2>
+    <form action="#" method="post" id="sendemail">
+    {% csrf_token %}
+    <ol>
+    <li>
+      <label for="username">Email Address (required)</label>
+      <input type="text" id="username" name="username" class="text" />
+    </li>
+    <li>
+      <label for="password">Password (required)</label>
+      <input type="password" id="password" name="password" class="password" />
+    </li>
+    <li>
+        <button type="submit">Send</button>
+    </li>
+    </ol>
+    </form>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <p>If you want to create a new account:</p>
+    <a href="{% url 'register_up' %}">Register</a>
+{% endblock %}
