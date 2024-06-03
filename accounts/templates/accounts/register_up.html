@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'accounts/main_accounts.html' %}
+{% load static %}
 
+
+{% block content %}
     <h2><span>Sign</span> up</h2>
     {{form.errors}}
     <form action="#" method="post" id="sendemail">
@@ -36,6 +33,4 @@
         </li>
       </ol>
     </form>
-
-</body>
-</html>
+{% endblock %}

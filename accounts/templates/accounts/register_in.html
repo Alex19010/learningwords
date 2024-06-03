@@ -1,13 +1,14 @@
 {% extends 'accounts/main_accounts.html' %}
 {% load static %}
 
+
 {% block content %}
     <h2><span>Sign</span> in</h2>
     <form action="#" method="post" id="sendemail">
     {% csrf_token %}
     <ol>
     <li>
-      <label for="username">Email Address (required)</label>
+      <label for="username">Username (required)</label>
       <input type="text" id="username" name="username" class="text" />
     </li>
     <li>

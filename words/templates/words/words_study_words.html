@@ -1,0 +1,37 @@
+{% extends 'words/main_study_words.html' %}
+{% load static %}
+
+
+
+{% block content %}
+    <h2>Study Words in {{ section.name }}</h2>
+    <p>Current Score: {{ score }}</p>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <form method="post" action="{% url 'study_words' section_id=section.id %}">
+        {% csrf_token %}
+        <input type="hidden" name="score" value="{{ score }}">
+        <input type="hidden" name="word_id" value="{{ random_word.id }}">
+        <input type="hidden" name="show_foreign" value="{{ show_foreign }}">
+        <p>
+            Translate the following word:
+            <strong>
+                {% if show_foreign %}
+                    {{ random_word.foreign_word }}
+                {% else %}
+                    {{ random_word.native_word }}
+                {% endif %}
+            </strong>
+        </p>
+        <input type="text" name="translation" placeholder="Your translation" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <form method="post" action="{% url 'show_words' section_id=section.id %}">
+        {% csrf_token %}
+        <button type="submit">Exit and Reset Score</button>
+    </form>
+{% endblock %}
