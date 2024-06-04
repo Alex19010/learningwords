@@ -2,17 +2,133 @@
 {% load static %}
 
 
+{% block title %}
+    Home
+{% endblock %}
+
+
 {% block content %}
-    <div class="">
-        {% for section in sections %}
-            <a href="{% url 'show_words' section_id=section.id %}">{{ section.name }} (User: {{ section.user.username }})</a>
-            <a href="{% url 'delete_section' section_id=section.id %}">Delete</a><p></p>
-        {% empty %}
-            <li>No sections available.</li>
-        {% endfor %}
-        <p>
-            Click here to create your section
-        </p>
-        <a href="{% url 'create_section' %}">create section</a>
+
+    <!-- Start Banner -->
+    <div class="ulockd-home-slider">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="pogoSlider" id="js-main-slider">
+                    <div class="pogoSlider-slide" style="background-image:url({% static 'images/banner_img.png' %});">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="slide_text">
+                                        <h3><span span class="theme_color">You only have know one thing</span><br>you can learn anything</h3>
+                                        <h4>Free Educations</h4>
+                                        <br>
+                                        <div class="full center">
+										    <a class="contact_bt" href="{% url 'show_sections' %}">Start a Course</a>
+										</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pogoSlider-slide" style="background-image:url({% static 'images/banner_img.png' %});">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="slide_text">
+                                        <h3><span span class="theme_color">You only have know one thing</span><br>you can learn anything</h3>
+                                        <h4>Free Educations</h4>
+                                        <br>
+                                        <div class="full center">
+										    <a class="contact_bt" href="courses.html">Start a Course</a>
+										</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- .pogoSlider -->
+            </div>
+        </div>
     </div>
+    <!-- End Banner -->
+
+	<!-- section -->
+    <div class="section margin-top_50">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 layout_padding_2">
+                    <div class="full">
+                        <div class="heading_main text_align_left">
+						   <h2><span>Welcome To</span> Education</h2>
+                        </div>
+						<div class="full">
+						  <p>Discover the joy of learning new languages with our comprehensive and interactive approach. Dive into engaging lessons, practice with native speakers, and track your progress as you unlock new skills and opportunities. Start your journey today and open the door to a world of possibilities!</p>
+						</div>
+						<div class="full">
+						   <a class="hvr-radial-out button-theme" href="{% url 'about' %}">About more</a>
+						</div>
+                    </div>
+                </div>
+				<div class="col-md-6">
+                    <div class="full">
+                        <img src="{% static 'images/img2.png' %}" alt="#" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- end section -->
+
+	<!-- section -->
+    <div class="section margin-top_50 silver_bg">
+        <div class="container">
+            <div class="row">
+			    <div class="col-md-6">
+                    <div class="full float-right_img">
+                        <img src="{% static 'images/img6.png' %}" alt="#" />
+                    </div>
+                </div>
+                <div class="col-md-6 layout_padding_2">
+                    <div class="full">
+                        <div class="heading_main text_align_left">
+						   <h2><span>Ease of Learning Words</h2>
+                        </div>
+						<div class="full">
+						  <p>Master new vocabulary effortlessly with our intuitive tools. Our personalized approach ensures you retain words longer and use them confidently. Experience the simplicity of learning today!</p>
+						</div>
+						<div class="full">
+						   <a class="hvr-radial-out button-theme" href="{% url 'show_sections' %}">Start</a>
+						</div>
+                    </div>
+                </div>
+			</div>
+        </div>
+    </div>
+	<!-- end section -->
+	<!-- section -->
+    <div class="section layout_padding padding_bottom-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="full">
+                        <div class="heading_main text_align_left">
+						   <h2><span>Reaserch</span></h2>
+                        </div>
+						<div class="full">
+						  <p>Explore cutting-edge research on language acquisition and cognitive science. Our platform integrates the latest findings to enhance your learning experience. Stay informed about innovative techniques and insights that make language learning more effective and enjoyable. Discover the science behind your success!</p>
+						</div>
+                    </div>
+                </div>
+				<div class="col-md-6">
+                    <div class="full">
+                        <img class="img-responsive" src="{% static 'images/img7.png' %}" alt="#" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- end section -->
+
+
 {% endblock %}

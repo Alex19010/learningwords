@@ -8,11 +8,21 @@ import random
 
 @login_required()
 def home(request):
+    return render(request, 'words/words_home.html')
+
+
+@login_required()
+def about(request):
+    return render(request, 'words/words_about.html')
+
+
+@login_required()
+def show_sections(request):
     sections = Section.objects.filter(user=request.user)
     context = {
         "sections": sections
     }
-    return render(request, 'words/words_home.html', context)
+    return render(request, 'words/words_show_sections.html', context)
 
 
 @login_required()
@@ -24,7 +34,7 @@ def create_section(request):
             section = form.save(commit=False)
             section.user = request.user
             form.save()
-            return redirect('home')
+            return redirect('show_sections')
     context = {
         "form": form,
     }

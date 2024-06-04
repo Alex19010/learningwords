@@ -2,12 +2,48 @@
 {% load static %}
 
 
+{% block title %}
+    Create new words
+{% endblock %}
+
+
+{% block about_page %}
+	<section class="inner_banner">
+	    <div class="container">
+	        <div class="row">
+                <div class="col-12">
+                    <div class="full">
+                        <h3>Create new words</h3>
+                    </div>
+                </div>
+            </div>
+	    </div>
+	</section>
+{% endblock %}
+
+
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        <input name="foreign_word" id="content1" type="text" class="" placeholder="Type your message here" style="width: 550px;" required></input>
-        <input name="native_word" id="content2" type="text" class="" placeholder="Type your message here" style="width: 550px;" required></input>
-        <button type="submit">Save</button>
-    </form>
-    <a href="{% url 'show_words' section_id=section.id %}">Return to section</a>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="full blog_img_popular">
+                        <form method="post">
+                            {% csrf_token %}
+                                <input name="foreign_word" id="content1" type="text" class="" placeholder="Foregin word" style="width: 550px;" required></input>
+                                <input name="native_word" id="content2" type="text" class="" placeholder="Native word" style="width: 550px;" required></input>
+                                <button type="submit">Save</button>
+                        </form>
+                    </div>
+                 </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="full blog_img_popular">
+                        <a href="{% url 'show_words' section_id=section.id %}">Return to section</a>
+                    </div>
+                 </div>
+            </div>
+        </div>
 {% endblock %}

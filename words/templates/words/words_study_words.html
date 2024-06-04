@@ -2,13 +2,36 @@
 {% load static %}
 
 
+{% block title %}
+    Study words
+{% endblock %}
+
+
+{% block about_page %}
+	<section class="inner_banner">
+	    <div class="container">
+	        <div class="row">
+                <div class="col-12">
+                    <div class="full">
+                        <h3>Study words</h3>
+                    </div>
+                </div>
+            </div>
+	    </div>
+	</section>
+{% endblock %}
+
 
 {% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="full blog_img_popular">
     <h2>Study Words in {{ section.name }}</h2>
     <p>Current Score: {{ score }}</p>
 
     {% if message %}
-        <p>{{ message }}</p>
+        <p>{{ message }}</p><p></p>
     {% endif %}
 
     <form method="post" action="{% url 'study_words' section_id=section.id %}">
@@ -34,4 +57,8 @@
         {% csrf_token %}
         <button type="submit">Exit and Reset Score</button>
     </form>
+                    </div>
+                 </div>
+            </div>
+        </div>
 {% endblock %}
