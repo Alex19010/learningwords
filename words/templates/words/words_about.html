@@ -1,0 +1,47 @@
+{% extends 'words/main_words.html' %}
+{% load static %}
+
+
+{% block title %}
+    About us
+{% endblock %}
+
+
+{% block about_page %}
+	<section class="inner_banner">
+	  <div class="container">
+	      <div class="row">
+		      <div class="col-12">
+			     <div class="full">
+				     <h3>About us</h3>
+				 </div>
+			  </div>
+		  </div>
+	  </div>
+	</section>
+{% endblock %}
+
+
+{% block content %}
+    <div class="section margin-top_50">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 layout_padding_2">
+                    <div class="full">
+                        <div class="heading_main text_align_left">
+						   <h2><span>Welcome To</span> Education</h2>
+                        </div>
+						<div class="full">
+						  <p>Discover the joy of learning new languages with our comprehensive and interactive approach. Dive into engaging lessons, practice with native speakers, and track your progress as you unlock new skills and opportunities. Start your journey today and open the door to a world of possibilities!</p>
+						</div>
+                    </div>
+                </div>
+				<div class="col-md-6">
+                    <div class="full">
+                        <img src="{% static 'images/img2.png' %}" alt="#" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

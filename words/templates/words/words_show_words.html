@@ -2,12 +2,59 @@
 {% load static %}
 
 
+{% block title %}
+    Show words
+{% endblock %}
+
+
+{% block about_page %}
+	<section class="inner_banner">
+	    <div class="container">
+	        <div class="row">
+                <div class="col-12">
+                    <div class="full">
+                        <h3>Show words</h3>
+                    </div>
+                </div>
+            </div>
+	    </div>
+	</section>
+{% endblock %}
+
+
 {% block content %}
     {% for word in words %}
-        <p>{{ word.foreign_word }} - {{ word.native_word }}</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="full blog_img_popular">
+                        <p>{{ word.foreign_word }} - {{ word.native_word }} <a href="{% url 'delete_word' section_id=section.id word_id=word.id %}" style="color: red;">Delete</a></p>
+                    </div>
+                 </div>
+            </div>
+        </div>
     {% empty %}
-        <p>No words available.</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="full blog_img_popular">
+                        <p>No words available.</p>
+                    </div>
+                 </div>
+            </div>
+        </div>
     {% endfor %}
-    <a href="{% url 'create_words' section_id=section.id %}">Create new words</a><p></p>
-    <a href="{% url 'home' %}">Return to home</a>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="full blog_img_popular">
+                        <a href="{% url 'create_words' section_id=section.id %}">Create new words</a><p></p>
+                        {% if words %}
+                            <a href="{% url 'study_words' section_id=section.id %}">Study words</a><p></p>
+                        {% endif %}
+                        <a href="{% url 'show_sections' %}">Return to the section</a>
+                    </div>
+                 </div>
+            </div>
+        </div>
 {% endblock %}

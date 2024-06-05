@@ -49,35 +49,6 @@
     <!-- end loader -->
     <!-- END LOADER -->
 
-    <!-- Start header -->
-    <header class="top-header">
-        <nav class="navbar header-nav navbar-expand-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="image"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-wd" aria-controls="navbar-wd" aria-expanded="false" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
-                    <ul class="navbar-nav">
-                        <li><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
-                        <li><a class="nav-link" href="{% url 'about' %}">About</a></li>
-                        <li><a class="nav-link" href="{% url 'show_sections' %}">Show sections</a></li>
-                        {% if request.user.is_authenticated %}
-                            <li><a class="nav-link" href="{% url 'home' %}">{{ request.user.username }}</a></li>
-                            <li><a class="nav-link" href="{% url 'logout' %}">Log out</a></li>
-                        {% else %}
-                            <li><a class="nav-link" href="{% url 'register_in' %}">Sign in</a></li>
-                            <li><a class="nav-link" href="{% url 'register_up' %}">Sign up</a></li>
-                        {% endif %}
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <!-- End header -->
 
 
     {% block about_page %}
@@ -108,9 +79,9 @@
 			       <div class="footer_blog footer_menu white_fonts">
 						    <h3>Quick links</h3>
 						    <ul>
-                                <li><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
-                                <li><a class="nav-link" href="{% url 'about' %}">About</a></li>
-                                <li><a class="nav-link" href="{% url 'show_sections' %}">Show sections</a></li>
+                                <li><a class="nav-link active" href="{% url 'register_in' %}">Home</a></li>
+                                <li><a class="nav-link" href="{% url 'register_in' %}">About</a></li>
+                                <li><a class="nav-link" href="{% url 'register_in' %}">Show sections</a></li>
 							</ul>
 						 </div>
 				 </div>
