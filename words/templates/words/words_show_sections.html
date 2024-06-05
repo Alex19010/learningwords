@@ -23,13 +23,13 @@
 
 
 {% block content %}
-    <h3>CLick on the section you want to use</h3>
+    <h3 style="color: blue;">CLick on the section you want to use</h3>
     {% for section in sections %}
         <div class="container">
             <div class="row">
                 <div class="full blog_img_popular">
                     <a href="{% url 'show_words' section_id=section.id %}" class="section-link">{{ section.name }} (User: {{ section.user.username }})</a>
-                    <a href="{% url 'delete_section' section_id=section.id %}" class="delete-link">Delete</a>
+                    <a href="{% url 'delete_section' section_id=section.id %}" class="delete-link" style="color: red;">Delete</a>
                 </div>
             </div>
         </div>
@@ -43,7 +43,8 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="full blog_img_popular">
-                    <a href="{% url 'create_section' %}">create section</a>
+                    <a href="{% url 'create_section' %}">Create section</a><p></p>
+                    <a href="{% url 'home' %}">Return to home</a>
                 </div>
             </div>
         </div>
