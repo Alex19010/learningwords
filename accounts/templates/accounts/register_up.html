@@ -36,6 +36,7 @@
 				    <div class="contact_form">
 						   <fieldset>
                                    <h2><span>Sign</span> up</h2>
+                               <p style="color: red;">{{ message }}</p>
                                <form action="#" method="post" id="sendemail">
                                     {% csrf_token %}
                                       <label for="username">Username (not required)</label>
@@ -49,6 +50,8 @@
                                         <label for="password_confirm">Password confirm (required)</label>
                                         <input type="password" id="password_confirm" name="password_confirm" class="password" />
                                         <button type="submit">Send</button>
+                                        <p>If you want to log in:</p>
+                                        <a href="{% url 'register_in' %}">Log in</a>
                                </form>
                            </fieldset>
 					</div>

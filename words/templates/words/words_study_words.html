@@ -31,7 +31,7 @@
     <p>Current Score: {{ score }}</p>
 
     {% if message %}
-        <p>{{ message }}</p><p></p>
+        <p style="color: blue;">{{ message }}</p><p></p>
     {% endif %}
 
     <form method="post" action="{% url 'study_words' section_id=section.id %}">

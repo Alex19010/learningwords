@@ -27,19 +27,25 @@ def register_up_view(request):
 
     if request.method == "POST":
         form = UserRegistrationForm(data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            if not username:
-                username = set_random_username()
-            user = User.objects.create(
-                username=username,
-                date_of_birth=form.cleaned_data['date_of_birth'],
-                email=form.cleaned_data['email'],
-            )
-            user.set_password(raw_password=form.cleaned_data['password'])
-            user.save()
-            login(request, user)
-            return redirect("home")
+        try:
+            if form.is_valid():
+                username = form.cleaned_data['username']
+                if not username:
+                    username = set_random_username()
+                user = User.objects.create(
+                    username=username,
+                    date_of_birth=form.cleaned_data['date_of_birth'],
+                    email=form.cleaned_data['email'],
+                )
+                user.set_password(raw_password=form.cleaned_data['password'])
+                user.save()
+                login(request, user)
+                return redirect("home")
+        except KeyError:
+            context = {
+                'message': 'Make sure that you do not have mistakes!'
+            }
+            return render(request, "accounts/register_up.html", context)
 
     context = {
         "form": form
