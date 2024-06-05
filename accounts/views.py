@@ -6,14 +6,14 @@ from .utils import set_random_username
 
 
 def register_in_view(request):
-    if request.method == "POST":  # получаем POST запрос с его данными
-        username = request.POST.get("username")  # достаём из запроса username
-        password = request.POST.get("password")  # достаём из запроса password
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
         user = authenticate(request, username=username,
-                            password=password)  # проверяем username и password на существование
-        if user is not None:  # Если пользователь с таким username и password найден
-            login(request, user)  # авторизуем пользователя
-            return redirect("home")  # перенаправляем его на главную страницу
+                            password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("home")
 
         context = {
             "error": "Ошибка! Проверьте username и password!"
@@ -23,28 +23,27 @@ def register_in_view(request):
 
 
 def register_up_view(request):
-    form = UserRegistrationForm()  # Определяется пустая форма для регистрации пользователя
+    form = UserRegistrationForm()
 
-    if request.method == "POST":  # Если пользователь ввёл данные в html форму и отправил их на сервер
-        form = UserRegistrationForm(data=request.POST)  # передаём данные в форму
-        if form.is_valid():  # форма проверяет данные
+    if request.method == "POST":
+        form = UserRegistrationForm(data=request.POST)
+        if form.is_valid():
             username = form.cleaned_data['username']
             if not username:
                 username = set_random_username()
-            user = User.objects.create(  # создаём пользователя
+            user = User.objects.create(
                 username=username,
                 date_of_birth=form.cleaned_data['date_of_birth'],
-                email=form.cleaned_data['email'],  # передаём пользователю email
+                email=form.cleaned_data['email'],
             )
-            user.set_password(raw_password=form.cleaned_data['password'])  # хешируем пароль пользователя
-            user.save()  # сохранение пользователя
+            user.set_password(raw_password=form.cleaned_data['password'])
+            user.save()
             login(request, user)
-            return redirect("home")  # перенаправление пользователя на страницу авторизации
+            return redirect("home")
 
-    context = {  # определение контекса
+    context = {
         "form": form
     }
-    # отправка контекстных данных на html шаблон
     return render(request=request, template_name="accounts/register_up.html", context=context)
 
 

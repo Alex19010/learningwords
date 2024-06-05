@@ -2,35 +2,58 @@
 {% load static %}
 
 
+{% block title %}
+    Registration
+{% endblock %}
+
+
+{% block about_page %}
+	<section class="inner_banner">
+	  <div class="container">
+	      <div class="row">
+		      <div class="col-12">
+			     <div class="full">
+				     <h3>Registration</h3>
+				 </div>
+			  </div>
+		  </div>
+	  </div>
+	</section>
+{% endblock %}
+
+
 {% block content %}
-    <h2><span>Sign</span> up</h2>
     {{form.errors}}
-    <form action="#" method="post" id="sendemail">
-        {% csrf_token %}
-      <ol>
-        <li>
-          <label for="username">Username (not required)</label>
-          <input id="username" name="username" class="text" />
-        </li>
-        <li>
-            <label for="date_of_birth">Date of birth (not required)</label>
-            <input type="date" id="date_of_birth" name="date_of_birth" class="text" />
-        </li>
-        <li>
-          <label for="email">Email Address (required)</label>
-          <input type="email" id="email" name="email" class="text" />
-        </li>
-        <li>
-            <label for="password">Password (required)</label>
-            <input type="password" id="password" name="password" class="password" />
-        </li>
-        <li>
-            <label for="password_confirm">Password confirm (required)</label>
-            <input type="password" id="password_confirm" name="password_confirm" class="password" />
-        </li>
-        <li>
-            <button type="submit">Send</button>
-        </li>
-      </ol>
-    </form>
+    <div class="section layout_padding contact_section" style="background:#f6f6f6;">
+        <div class="container">
+               <div class="row">
+                 <div class="col-lg-8 col-md-8 col-sm-12">
+				    <div class="full float-right_img">
+                        <img src="{% static 'images/img10.png' %}" alt="#">
+                    </div>
+                 </div>
+				 <div class="col-lg-4 col-md-4 col-sm-12">
+				    <div class="contact_form">
+						   <fieldset>
+                                   <h2><span>Sign</span> up</h2>
+                               <form action="#" method="post" id="sendemail">
+                                    {% csrf_token %}
+                                      <label for="username">Username (not required)</label>
+                                      <input id="username" name="username" class="text" />
+                                        <label for="date_of_birth">Date of birth (not required)</label>
+                                        <input type="date" id="date_of_birth" name="date_of_birth" class="text" />
+                                      <label for="email">Email Address (required)</label>
+                                      <input type="email" id="email" name="email" class="text" />
+                                        <label for="password">Password (required)</label>
+                                        <input type="password" id="password" name="password" class="password" />
+                                        <label for="password_confirm">Password confirm (required)</label>
+                                        <input type="password" id="password_confirm" name="password_confirm" class="password" />
+                                        <button type="submit">Send</button>
+                               </form>
+                           </fieldset>
+					</div>
+                 </div>
+               </div>
+           </div>
+        </div>
 {% endblock %}

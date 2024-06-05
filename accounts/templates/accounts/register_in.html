@@ -2,27 +2,56 @@
 {% load static %}
 
 
+{% block title %}
+    Log in
+{% endblock %}
+
+
+{% block about_page %}
+	<section class="inner_banner">
+	  <div class="container">
+	      <div class="row">
+		      <div class="col-12">
+			     <div class="full">
+				     <h3>Log in</h3>
+				 </div>
+			  </div>
+		  </div>
+	  </div>
+	</section>
+{% endblock %}
+
+
 {% block content %}
-    <h2><span>Sign</span> in</h2>
-    <form action="#" method="post" id="sendemail">
-    {% csrf_token %}
-    <ol>
-    <li>
-      <label for="username">Username (required)</label>
-      <input type="text" id="username" name="username" class="text" />
-    </li>
-    <li>
-      <label for="password">Password (required)</label>
-      <input type="password" id="password" name="password" class="password" />
-    </li>
-    <li>
-        <button type="submit">Send</button>
-    </li>
-    </ol>
-    </form>
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
-    <p>If you want to create a new account:</p>
-    <a href="{% url 'register_up' %}">Register</a>
+    <div class="section layout_padding contact_section" style="background:#f6f6f6;">
+        <div class="container">
+               <div class="row">
+                 <div class="col-lg-8 col-md-8 col-sm-12">
+				    <div class="full float-right_img">
+                        <img src="{% static 'images/img10.png' %}" alt="#">
+                    </div>
+                 </div>
+				 <div class="col-lg-4 col-md-4 col-sm-12">
+				    <div class="contact_form">
+						   <fieldset>
+                                <h2><span>Sign</span> in</h2>
+                                <form action="#" method="post" id="sendemail">
+                                {% csrf_token %}
+                                  <label for="username">Username (required)</label>
+                                  <input type="text" id="username" name="username" class="text" />
+                                  <label for="password">Password (required)</label>
+                                  <input type="password" id="password" name="password" class="password" />
+                                    <button type="submit">Send</button>
+                                </form>
+                                {% if error %}
+                                    <p style="color: red;">{{ error }}</p>
+                                {% endif %}
+                                <p>If you want to create a new account:</p>
+                                <a href="{% url 'register_up' %}">Register</a>
+                           </fieldset>
+						</form>
+                 </div>
+               </div>
+           </div>
+        </div>
 {% endblock %}
